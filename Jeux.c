@@ -114,11 +114,9 @@ int rand_a_b(int a, int b){
       printf("               |           CONSOLE  X-BOW  B457           |\n");
       printf("               |                                          |\n");
       printf("               ********************************************\n\n\n\n\n");
-      printf("Bienvenue dans la console de X-BOW\nVous etes un chercheur et vous travailler sur un systeme d'intelligence artificielle\nVotre but ici est de reparer les anomalies de ce model\nPour cela il vous faudrat parcourir les differents composants de X-BOW\nBon courage !\nMettez la console en pleine ecran :)");
+      printf("Bienvenue dans la console de X-BOW\nVous etes un chercheur et vous travailler sur un systeme d'intelligence artificielle\nVotre but ici est de reparer les anomalies de ce model\nPour cela il vous faudrat parcourir les differents composants de X-BOW\nBon courage !\n\nPour le bon fonctionnement du jeu merci de faire les modules dans l'ordre (1,2,3)\n\nMettez la console en pleine ecran :)");
       printf("\n\n\n\nAcces au module de reparation . . .\n\n\n\n");
       c1();
-      printf("Ouvrir le module : ");
-      scanf("%d", &choixJoueur);
       if (choixJoueur == 1){
         printf("\n\nChargement du module Memoire . . .\n\n");
         printf("Bienvenue,\nIci tu vas devoir trouver les morceaux de memoire qui genes X-BOW a se comporter comme un robot\nPour cela regarde la description de chaque image ou video et supprime les bonnes.\n");
