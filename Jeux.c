@@ -272,7 +272,7 @@ int rand_a_b(int a, int b){
     			}
     			if ( ptdevieM <= 0){
     				printf("Tu a reussi a combattre contre le virus,\nBien jouer a toi");
-    				printf("Redemarrage serveur . . .\nX-BOW en service.");
+    				printf("\n\n\n\n\n\nRedemarrage serveur . . .\n\X-BOW en service.\n\n\n\n");
     				printf("Bravo ! tu a reparer X-BOW merci a toi de m'avoir aider.\n");
     				break;
     				}
