@@ -16,7 +16,6 @@ typedef struct Choix1 choix1;
   void c1(){
     choix1 memoire = {"Memoire",8};
     choix1 antivirus = {"Anti-Virus",64};
-    choix1 cartemere = {"Carte Mere",267};
     choix1 processeur = {"Processeur",156};
 
 //Mémoire
@@ -27,13 +26,9 @@ typedef struct Choix1 choix1;
     printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n");
     printf("|2|  | %s      %d G |\n",antivirus.name,antivirus.poid);
     printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n");
-//Carte Mère
-    printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n");
-    printf("|3|  | %s     %d G |\n",cartemere.name,cartemere.poid);
-    printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n");
 //Processeur
     printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n");
-    printf("|4|  | %s     %d G |\n",processeur.name,processeur.poid);
+    printf("|3|  | %s     %d G |\n",processeur.name,processeur.poid);
     printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n\n");
   }
 struct Memoire1{
@@ -61,14 +56,14 @@ typedef struct Memoire1 memoire1;
         printf("     |          |  %s\n",video002.description );
         printf(" |2| | %s |\n",video002.name);
         printf("     |          |\n");
-        printf("     |   %d G    |\n",video002.poid);
+        printf("     |   %d G   |\n",video002.poid);
         printf("     #~~~~~~~~~~#\n\n");
     //Img009
         printf("     #~~~~~~~~~~#\n");
         printf("     |          |  %s\n",img009.description );
         printf(" |3| |  %s  |\n",img009.name);
         printf("     |          |\n");
-        printf("     |   %d G   |\n",img009.poid);
+        printf("     |   %d G    |\n",img009.poid);
         printf("     #~~~~~~~~~~#\n\n");
     //Img015
         printf("     #~~~~~~~~~~#\n");
@@ -96,8 +91,16 @@ int main() {
   int a = 1;
   int b = 3;
   int choixM;
+  int victoire = 0;
 
   srand(time(NULL));
+
+  //PROCESSEUR
+  int choixP = 0;
+  int cable = 5;
+  int inventaire = 0;
+  int choixINV = 0;
+  int choixFIN = 0;
 
 
   printf("\n\n\n\n\n\n\n\n               ********************************************\n");
@@ -141,7 +144,7 @@ int main() {
   }
   if (choixJoueur == 2){
     printf("\n\nChargement du module Anti-Virus . . .\n\n");
-    printf("Ici le but est simple tu doit aider l'anti-virus a combattre contre des virus qui endommage X-BOW\n\n");
+    printf("Ici le but est simple tu doit aider l'anti-virus a combattre contre un virus qui endommage X-BOW\n\n");
     for(i=100; i>=0; i--){
       choixM = rand_a_b(1, 4);
         if ( ptdevieJ <= 0){
@@ -149,7 +152,7 @@ int main() {
             break;
         }
         printf("|1| Attaque        |2| Défence ;\n");
-        scanf("%d", &choixj);
+        scanf("%d|", &choixj);
         if( choixj == 1){
                 switch (choixM) {
                   case 1 :
@@ -194,20 +197,130 @@ int main() {
                 }
                 if ( ptdevieM <= 0){
                     printf("Tu a reussi a combattre contre le virus,\nBien jouer a toi");
+                    victoire = victoire + 1;
+                  }
+
+              }
+              if (victoire = 1) {
                     printf("\n\n\n\nAcces au module de reparation . . .\n\n\n\n");
                     c1();
                     printf("Ouvrir le module : ");
-                    scanf("%d", &choixJoueur);
-                }
-          }
-
+                    scanf("%d|", &choixJoueur);
+                  }
   }
   if (choixJoueur == 3){
-    printf("\n\nChargement du module Carte Mere . . .\n\n");
-
-  }
-  if (choixJoueur == 4){
     printf("\n\nChargement du module Processeur . . .\n\n");
+    printf("Bienvenue dans le module du processeur,\nIci tu vas devoir changer le processeur entier mais avant cela il te faut le debrancher,\nTon but est simple débranche les 5 cables dans le bon ordres et change le processeur.\nBon courage la vie de X-BOW est en jeu !\n\n");
+    printf("(Ah une derniere chose, j'espere que tu connais l'ordres des lettres dans l'aphabet cela te sera surment utile)\n\n\n\n\n");
 
+
+    printf("      CABLE NOIR  |1|       \n");
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~                                   CABLE ROUGE   |2|   \n");
+    printf("                         |                            ~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                         |                           |\n");
+    printf("                         |                           |\n");
+    printf("                         |                           |\n");
+    printf("                         |                           |\n");
+    printf("                         |           ________________|______________        \n");
+    printf("                         |           |                             |        \n");
+    printf("                         |           |                             |        \n");
+    printf("                         |__________ |                             |        \n");
+    printf("                                     |         PROCESSEUR          |        \n");
+    printf("                                     |                             |_________________        \n");
+    printf("                              _______|                             |                 |\n");
+    printf("                             |       |_____________________________|                 |\n");
+    printf("                           C |                      |                                |\n");
+    printf("                           A |                      | C                              |\n");
+    printf("                           B |                 |4|  | A                              |~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("                           L | |3|                  | B                                    CABLE BLEU  |5|   \n");
+    printf("                           E |                   B  | L\n");
+    printf("                             | V                 L  | E\n");
+    printf("                             | E                 A  |\n");
+    printf("                             | R                 N  |\n");
+    printf("                             | T                 C  |\n\n\n");
+    while(cable != 4){
+    printf("Quelle cable souhaite tu debrancher ? \n\n");
+    printf("Le cable |");
+    scanf("%d|\n", &choixP);
+    if (choixP == 4) {
+      printf("Et de 1 !\n");
+      cable = cable - 1;
+    }
+    else {
+        printf("Fait attention ! c'est pas le bon heureusement que je t'ai prevenu avant\n");
+    }
   }
+  while(cable != 3){
+  printf("Quelle cable souhaite tu debrancher ? \n\n");
+  printf("Le cable |");
+  scanf("%d|\n", &choixP);
+  if (choixP == 5) {
+    printf("Et de 2 !\n");
+    cable = cable - 1;
+  }
+  else {
+      printf("Fait attention ! c'est pas le bon heureusement que je t'ai prevenu avant\n");
+  }
+}
+while(cable != 2){
+printf("Quelle cable souhaite tu debrancher ? \n\n");
+printf("Le cable |");
+scanf("%d|\n", &choixP);
+if (choixP == 1) {
+  printf("Et de 3 !\n");
+  cable = cable - 1;
+}
+else {
+    printf("Fait attention ! c'est pas le bon heureusement que je t'ai prevenu avant\n");
+}
+}
+while(cable != 1){
+printf("Quelle cable souhaite tu debrancher ? \n\n");
+printf("Le cable |");
+scanf("%d|\n", &choixP);
+if (choixP == 2) {
+  printf("Et de 4 !\n");
+  cable = cable - 1;
+}
+else {
+    printf("Fait attention ! c'est pas le bon heureusement que je t'ai prevenu avant\n");
+}
+}
+while(cable != 0){
+printf("Quelle cable souhaite tu debrancher ? \n\n");
+printf("Le cable |");
+scanf("%d|\n", &choixP);
+if (choixP == 3) {
+  printf("Et de 5, Bien jouer !\n");
+  cable = cable - 1;
+}
+else {
+    printf("Fait attention ! c'est pas le bon heureusement que je t'ai prevenu avant\n");
+}
+}
+printf("tu n'a pas endomager X-BOW c'est tres bien maintenant il te reste plus qu'a changer le processeur\nPour cela vas dans ton inventaire( |9| ) et change le !\n");
+printf("Allez dans l'inventaire |");
+scanf("%d|\n\n\n\n", &inventaire);
+
+if (inventaire == 9) {
+  printf("                              #~~~~~~~~~~~~~~~~~~~~~~#\n");
+  printf("                              |      INVENTAIRE      |\n");
+  printf("                              #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n\n");
+  printf("    __\n");
+  printf("   (__)  Processeur |  Quantite : 1  |  Etat : Neuf \n\n\n\n");
+  printf("Changer de processeur ?  OUI |1|     NON |2| \n");
+  scanf("%d|\n",&choixINV);
+  if (choixINV == 1) {
+    printf("Le processeura bien ete changer !\n");
+  }
+  else {
+    printf("Si tu ne change pas le processeur X-BOW vas etre deffectueux. . . \nJe ne suis pas sur que c'est ce que tu vieulle. . . .\n");
+    printf("je te laisse une derniere chance :\n");
+    printf("Changer de processeur ?  OUI |1|     NON |2| \n");
+    scanf("%d|\n",&choixINV);
+    }
+  }
+  printf("Redemarrage serveur . . .\nX-BOW en service.");
+  printf("Bravo ! tu a reparer X-BOW merci a toi de m'avoir aider.\n");
+}
 }
