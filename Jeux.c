@@ -4,6 +4,10 @@
 #include <time.h>
 
 
+int rand_a_b(int a, int b){
+			return rand()%(b-a) +a;
+}
+
 struct Choix1{
   char name[50];
   int poid;
@@ -23,6 +27,13 @@ typedef struct Choix1 choix1;
 		printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n");
 		printf("|2|  | %s     %d G |\n",processeur.name,processeur.poid);
 		printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n\n");
+    //Anti-Virus
+    printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n");
+    printf("|3|  | %s      %d G |\n",antivirus.name,antivirus.poid);
+    printf("     #~~~~~~~~~~~~~~~~~~~~~~#\n\n\n");
+
+        printf("Ouvrir le module : ");
+        scanf("%d", &choixJoueur);
   }
     struct Memoire1{
       char name[50];
@@ -79,6 +90,23 @@ typedef struct Choix1 choix1;
       int choixINV = 0;
       int choixFIN = 0;
 
+      //combat Anti-Virus
+      int attaqueM = 10;
+      int ptdevieM = 100;
+      int attaqueJ = 20;
+      int ptdevieJ = 100;
+      int i = 100;
+      int choixj = 0;
+      int degatsM = attaqueM;
+      int degatsJ = attaqueJ;
+      int a = 1;
+      int b = 3;
+      int choixM;
+      int victoire = 2;
+
+      srand(time(NULL));
+
+
       printf("\n\n\n\n\n\n\n\n               ********************************************\n");
       printf("               |                                          |\n");
       printf("               |           CONSOLE  X-BOW  B457           |\n");
@@ -115,8 +143,7 @@ typedef struct Choix1 choix1;
         printf("\nBien jouer a toi une parti de faite deja\nNe reste plus qu'a reparer le reste");
         printf("\n\n\n\nAcces au module de reparation . . .\n\n\n\n");
         c1();
-        printf("Ouvrir le module : ");
-        scanf("%d", &choixJoueur);
+
       }
       if (choixJoueur == 2){
         printf("\n\nChargement du module Processeur . . .\n\n");
@@ -231,5 +258,68 @@ typedef struct Choix1 choix1;
         }
     	printf("\n\n\n\nAcces au module de reparation . . .\n\n\n\n");
     	c1();
+    }
+    }
+    if (choixJoueur == 3){
+    	printf("\n\nChargement du module Anti-Virus . . .\n\n");
+    	printf("Ici le but est simple tu doit aider l'anti-virus a combattre contre un virus qui endommage X-BOW\n\n");
+    	for(i=100; i>=0; i--){
+    		choixM = rand_a_b(1, 4);
+    			if ( ptdevieJ <= 0){
+    					printf("Les virus ont gagner . . . ");
+    					break;
+
+    			}
+    			if ( ptdevieM <= 0){
+    				printf("Tu a reussi a combattre contre le virus,\nBien jouer a toi");
+    				printf("Redemarrage serveur . . .\nX-BOW en service.");
+    				printf("Bravo ! tu a reparer X-BOW merci a toi de m'avoir aider.\n");
+    				break;
+    				}
+    			printf("|1| Attaque        |2| Défence ;\n");
+    			scanf("%d|", &choixj);
+    			if( choixj == 1){
+    							switch (choixM) {
+    								case 1 :
+    								//Attaque du Joueur :
+    										printf("Tu attaque le virus %d \n", attaqueJ);
+    										printf("Le Virus a perdu %d PV \n", degatsJ);
+    										printf("Vie du Virus %d \n", ptdevieM -= degatsJ);
+    										printf("Ta vie = %d \n", ptdevieJ);
+    								//Attaque du Virus :
+    										printf("Attaque du Virus %d \n", attaqueM);
+    										printf("Tu a perdu %d PV \n", degatsM);
+    										printf("Ta vie = %d \n", ptdevieJ -= degatsM);
+    										break;
+    								case 2 :
+    									//Defence du Virus :
+    											printf("Le Virus se protege \n");
+    									//Attaque du Joueur :
+    											printf("Tu Attaque %d \n", attaqueJ/4);
+    											printf("Le Virus a perdu %d PV \n", degatsJ/4);
+    											printf("Vie du Virus %d \n", ptdevieM -= degatsJ/4);
+    											printf("Ta vie = %d \n", ptdevieJ);
+    											break;
+    									}
+    							}
+    							if( choixj == 2){
+    								switch (choixM) {
+    									case 1 :
+    									//Défence du Joueur :
+    											printf("Tu te protege \n");
+    									//Attaque du Virus :
+    											printf("Attaque du Virus %d \n", attaqueM/4);
+    											printf("Tu a perdu %d PV \n", degatsM/4);
+    											printf("Ta vie = %d \n", ptdevieJ -= degatsM/4);
+    											break;
+    									case 2 :
+    									//Défence du Joueur :
+    											printf("Le joueur se protege \n");
+    									//Defence du Virus :
+    											printf("Le Virus se protege \n");
+    											break;
+    								}
+    							}
+    							}
     }
     }
